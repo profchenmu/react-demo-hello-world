@@ -13,15 +13,14 @@ getInitialState: function() {
 
   componentDidMount: function() {
   	$.ajax({
-  		url: 'http://localhost:3000/index',
+  		url: 'http://localhost:81/b',
       mode: 'no-cors',
       method: 'GET'
   	})
   	.done(function(msg) {
-  		console.log(msg);
   		if (this.isMounted()) {
 	        this.setState({
-	          list: msg[0].todoName
+	          list: JSON.parse(msg)[0].todoName
 	        });
 	      }
   	}.bind(this));
@@ -32,7 +31,6 @@ getInitialState: function() {
   },
 
   render: function() {
-    console.log(this.state.list);
     return (
       <div className="container">
         <h1>{this.state.list}</h1>
