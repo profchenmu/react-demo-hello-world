@@ -10,7 +10,7 @@ export default React.createClass ({
 			{
 		    	names.map(function (name) {
 			      	return (
-			      		<li>
+			      		<li data-name="" key={name}>
 							<a name={name} className="menu-item active">
 								<span className="icon-index"></span>
 								平台首页
