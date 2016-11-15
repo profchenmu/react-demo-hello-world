@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import getMenu from '../store/nav';
 import Counter from '../../component/core/nav';
 import counter from '../reducers/nav';
 import { createStore } from 'redux';
+import increaseAction from '../actions/nav'
 
 // Store
-const store = createStore(counter)
+const store = createStore(counter);
 // const store = createStore();
 
 // Map Redux state to component props
