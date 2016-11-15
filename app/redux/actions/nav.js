@@ -30,5 +30,5 @@ import data from './data.json';
 // )(Counter)
 
 export default {
-  type: 'increase'
+  type: 'INCREMENT'
 }

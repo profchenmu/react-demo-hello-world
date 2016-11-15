@@ -7,15 +7,32 @@ import counter from '../../redux/reducers/nav'
 // import { Provider } from 'react-redux';
 
 const store = createStore(counter);
-const rootEl = document.getElementById('root')
+// const rootEl = document.getElementById('root');
 
-const render = () => ReactDOM.render(
-	<div className="root-sub-nav">
-		<NavIn value={store.getState()} />
-	</div>,
-  rootEl
-)
+// const render = () => ReactDOM.render(
+// 	<div className="root-sub-nav">
+// 		<NavIn
+// 			value={store.getState()} 
+// 			onIncreaseClick={() => store.dispatch({ type: 'INCREMENT' })}
+// 		/>
+// 	</div>,
+//   rootEl
+// )
 
-render()
-store.subscribe(render)
+// render()
+// store.subscribe(render)
 
+export default React.createClass ({
+
+  render: function() {
+    return (
+        <div className="root-sub-nav">
+                <NavIn
+			value={store.getState()} 
+			onIncreaseClick={() => store.dispatch({ type: 'INCREMENT' })}
+		/>
+        </div>
+    );
+  }
+
+});

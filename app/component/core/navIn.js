@@ -11,8 +11,8 @@ class Counter extends Component {
 
   render() {
   	var menus = data.menu;
-	console.log(this.props);
     const { value, onIncreaseClick } = this.props
+    console.log(this.props);
     return (
       	<ul className="nav">
       	{
