@@ -1,5 +1,7 @@
 import React from 'react';
-import NavIn from './navIn';
+// import NavIn from './navIn';
+import App from '../../redux/store/nav';
+
 
 
 export default React.createClass ({
@@ -7,7 +9,9 @@ export default React.createClass ({
   render: function() {
     return (
         <div className="root-sub-nav">
-            <NavIn />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </div>
     );
   }
