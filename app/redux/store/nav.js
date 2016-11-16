@@ -1,24 +1,24 @@
 import { connect } from 'react-redux';
-import Counter from '../../component/core/nav';
+import Counter from '../../component/core/navIn';
 import counter from '../reducers/nav';
 import { createStore } from 'redux';
 import increaseAction from '../actions/nav'
 
 // Store
-const store = createStore(counter);
 // const store = createStore();
 
 // Map Redux state to component props
 function mapStateToProps(state) {
   return {
-    value: state.count
+    value: state
   }
 }
 
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction)
+  	// onIncreaseClick: dispatch(increaseAction())
+    onIncreaseClick: increaseAction
   }
 }
 

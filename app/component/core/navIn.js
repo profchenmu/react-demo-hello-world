@@ -1,35 +1,26 @@
 import React, { Component, PropTypes } from 'react';
-import data from './data.json';
 
-class Counter extends Component {
+ 
 
+
+export default class Counter extends Component {
 	static propTypes = {
-    value: PropTypes.number.isRequired,
-  onIncreaseClick: PropTypes.func.isRequired
+    value: PropTypes.object.isRequired,
+    onIncreaseClick: PropTypes.object.isRequired
   }
-
-
-  render() {
-  	var menus = data.menu;
-    const { value, onIncreaseClick } = this.props
+  componentWillMount() {
     console.log(this.props);
-    return (
-      	<ul className="nav">
-      	{
-          	menus.map(function (menu) {
-      	      	return (
-      	      		<li data-name={menu.name} key={menu.name}>
-      					<a onClick={onIncreaseClick} className="menu-item" href={menu.url} data-href={menu.name}>
-      						<span className={`icon-${menu.name}`}></span>
-      						{menu.title}
-      					</a>
-      				</li>
-      	      	)
-      	    })
-      	}
-      	</ul>
-    )
   }
+	render() {
+		const {value, onIncreaseClick} = this.props
+		return (
+			<ul className="nav" data-cao={onIncreaseClick}>
+
+      	</ul>
+		)
+	}
 }
 
-export default Counter;
+
+
+

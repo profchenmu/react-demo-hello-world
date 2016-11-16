@@ -29,6 +29,4 @@ import data from './data.json';
 //   // mapDispatchToProps
 // )(Counter)
 
-export default {
-  type: 'INCREMENT'
-}
+export default data

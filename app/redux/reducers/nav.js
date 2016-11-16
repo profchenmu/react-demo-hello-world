@@ -1,8 +1,10 @@
-export default (state = 0, action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case 'INCREMENT':
-      return state + 1
+    console.log(action)
+      return state
     default:
+    console.log(action)
       return state
   }
   // return state;
