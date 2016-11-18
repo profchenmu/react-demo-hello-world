@@ -29,4 +29,12 @@ import data from './data.json';
 //   // mapDispatchToProps
 // )(Counter)
 
+const temp = {
+    "index":0,
+    "name":"index",
+    "title":"首页",
+    "url":"#manage"
+}
+
+data.fragment.children.unshift(temp);
 export default data

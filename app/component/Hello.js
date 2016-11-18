@@ -1,35 +1,42 @@
-import React from 'react';
-import Nav from './core/nav';
+import React, {Component} from 'react';
+// import Nav from './core/nav';
+import Main from './core/router';
+import {browserHistory, Router, Route, Link} from 'react-router';
+import {Provider} from 'react-redux';
+import App from '../redux/store/nav';
+import { createStore } from 'redux';
 
-var Hello = React.createClass ({
+import counter from '../redux/reducers/nav'
 
-  getInitialState: function() {
-    return {
-      list: ''
-    };
-  },
+const store = createStore(counter);
 
-  componentDidMount: function() {
-  	$.ajax({
-  		url: 'http://localhost:81/b',
-      mode: 'no-cors',
-      method: 'GET'
-  	})
-  	.done(function(msg) {
-  		if (this.isMounted()) {
-          this.setState({
-            list: JSON.parse(msg)[0].todoName
-          });
-        }
-  	}.bind(this));
-  },
+export default class Root extends Component {
 
-  componentWillUnmount: function() {
-    this.serverRequest.abort();
-  },
+  // componentDidMount() {
+  // 	$.ajax({
+  // 		url: 'http://localhost:81/b',
+  //     mode: 'no-cors',
+  //     method: 'GET'
+  // 	})
+  // 	.done(function(msg) {
+  // 		if (this.isMounted()) {
+  //         this.setState({
+  //           list: JSON.parse(msg)[0].todoName
+  //         });
+  //       }
+  // 	}.bind(this));
+  // }
 
-  render: function() {
+  // componentWillUnmount() {
+  //   this.serverRequest.abort();
+  // }
+
+
+
+  render() {
+    console.timeEnd('testForEach');
     return (
+      <Provider store={store} history={browserHistory}>
       <div className="root">
       <div className="page-header">
           <div id="loading-bar"></div>
@@ -56,15 +63,21 @@ var Hello = React.createClass ({
           </div>
       </div>
       <div className="container root-view">
-        <Nav />
+
+        <div className="root-sub-nav">
+      
+                <App history={browserHistory} />
+          
+      </div>
+        <Router history={browserHistory} routes={Main} />
       </div>
       <footer className="footer">
         
       </footer>
       </div>
+      </Provider>
     );
   }
 
-})
 
-export default Hello;
+}

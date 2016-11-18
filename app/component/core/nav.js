@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 // import NavIn from './navIn';
 import { createStore } from 'redux';
 import counter from '../../redux/reducers/nav'
-import App from '../../redux/store/nav';
+import Navs from '../../redux/store/nav';
 import { Provider } from 'react-redux';
 import React, { Component, PropTypes } from 'react';
 
@@ -23,12 +23,15 @@ const store = createStore(counter);
 // render()
 // store.subscribe(render)
 
+
 export default class Nav extends Component {
 	render() {
 		return (
+      <div className="root-sub-nav">
 			<Provider store={store}>
-                <App />
+                <Navs />
         	</Provider>
+      </div>
 		)
 	}
 }
