@@ -33,7 +33,7 @@ const temp = {
     "index":0,
     "name":"index",
     "title":"首页",
-    "url":"#manage"
+    "url":"#index"
 }
 
 data.fragment.children.unshift(temp);

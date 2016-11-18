@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 // import Nav from './core/nav';
-import Main from './core/router';
-import {browserHistory, Router, Route, Link} from 'react-router';
+// import Main from './core/router';
+
 import {Provider} from 'react-redux';
 import App from '../redux/store/nav';
 import { createStore } from 'redux';
+
 
 import counter from '../redux/reducers/nav'
 
@@ -34,9 +35,11 @@ export default class Root extends Component {
 
 
   render() {
+    console.log(this);
     console.timeEnd('testForEach');
+    const {children} = this.props;
     return (
-      <Provider store={store} history={browserHistory}>
+      <Provider store={store}>
       <div className="root">
       <div className="page-header">
           <div id="loading-bar"></div>
@@ -66,10 +69,12 @@ export default class Root extends Component {
 
         <div className="root-sub-nav">
       
-                <App history={browserHistory} />
+          <App />
           
-      </div>
-        <Router history={browserHistory} routes={Main} />
+        </div>
+        <div className="main-right">
+          {children}
+        </div>
       </div>
       <footer className="footer">
         

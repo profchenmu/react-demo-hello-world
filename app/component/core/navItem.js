@@ -2,7 +2,10 @@ import React, { Component, PropTypes } from 'react';
 
 import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router';
 
-
+const ACTIVE = {
+    backgroundColor: '#005cd5',
+    color: '#fff'
+}
 export default class MenuItem extends Component {
 	static propTypes = {
     name: PropTypes.string.isRequired,
@@ -12,17 +15,14 @@ export default class MenuItem extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props);
+    // console.log(this.props);
   }
 	render() {
 		const {name, title, url, index} = this.props
 		return (
 			<li data-name={name}>
-				<a className={`menu-item ${index==0? 'active': ''}`} href={url} data-href={name}>
-					<span className={`icon-${name}`}></span>
-					{title}
-				</a>
-				<Link to="/manage">Page 1</Link>
+				<Link className="menu-item" to={url.replace('#', '/')} activeClassName="active"><span className={`icon-${name}`}></span>
+					{title}</Link>
 			</li>
 		)
 	}
