@@ -1,40 +1,22 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import loginAction from '../../../redux/actions/login';
 
 import { connect } from 'react-redux';
 // import Nav from './core/nav';
-function mapStateToProps(state) {
-  return {
-    value: state
-  }
-}
 
-// Map Redux actions to component props
-function mapDispatchToProps(dispatch) {
-  return {
-    // onIncreaseClick: dispatch(loginAction())
-    onIncreaseClick: loginAction
-  }
-}
-
-// Connected Component
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
 
 
 class Login extends Component {
 
 
     static propTypes = {
-    value: PropTypes.object.isRequired,
-    onIncreaseClick: PropTypes.func.isRequired
+    value2: PropTypes.object.isRequired,
+    loginClick: PropTypes.func.isRequired
   }
 
 
   render() {
-    const {value, onIncreaseClick} = this.props;
+    const {value2, loginClick} = this.props;
     console.log(this.props);
     console.timeEnd('testForEach');
     return (
@@ -78,7 +60,8 @@ class Login extends Component {
                             <span className="icon-locked"></span>
                             <input type="password" className="auth-login" id="input-password-1" placeholder="请输入登录密码" />
                         </div>
-                        <button cao={onIncreaseClick} type="submit" id="submit-login" className="btn btn-default btn-primary">登 录</button>
+                        <button onClick={loginClick} type="button" id="submit-login" className="btn btn-default btn-primary">登 录</button>
+                        
                         <a href="javascript:;" className="help" data-placement="bottom" title="请留意通知短信或向公司的账户管理员索取登录账号；请留意发送到您手机上的密码，忘记密码请联系管理员">
                             <span className="icon-info-with-circle"></span>帮助
                         </a>
@@ -94,3 +77,25 @@ class Login extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    value2: state
+  }
+}
+
+// Map Redux actions to component props
+function mapDispatchToProps(dispatch) {
+  return {
+    loginClick: () => dispatch(loginAction)
+    // loginClick: loginAction
+  }
+}
+
+// Connected Component
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
+
+

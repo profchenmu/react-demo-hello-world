@@ -6,10 +6,21 @@
 // const store = createStore(counter)
 
 // Map Redux state to component props
-const login = (userData={}) => ({
-  type: LOGIN,
-  payload: userData
-})
+
+// const loginDone = (userData) => ({
+//   type: LOGIN,
+//   payload: userData
+// })
+
+// const login = (formData) => {
+//   return dispatch => {
+//     userService
+//       .login(formData)
+//       .then(
+//         re => dispatch(loginDone(re))
+//       )
+//   }
+// }
 // const getMenu = (formData) => {
 //   return dispatch => {
 //     dispatch(loginDone(data));
@@ -30,7 +41,10 @@ const login = (userData={}) => ({
 // )(Counter)
 
 const temp = {
-    'message':'00'
+	type: 'LOGIN',
+  	payload: {
+    	value2: 1
+    }
 };
 
 export default temp;
