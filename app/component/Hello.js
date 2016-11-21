@@ -2,14 +2,10 @@ import React, {Component} from 'react';
 // import Nav from './core/nav';
 // import Main from './core/router';
 
-import {Provider} from 'react-redux';
-import App from '../redux/store/nav';
-import { createStore } from 'redux';
+// import {Provider} from 'react-redux';
 
+import App from './core/navIn';
 
-import counter from '../redux/reducers/nav'
-
-const store = createStore(counter);
 
 export default class Root extends Component {
 
@@ -39,8 +35,7 @@ export default class Root extends Component {
     console.timeEnd('testForEach');
     const {children} = this.props;
     return (
-      <Provider store={store}>
-      <div className="root">
+      <div className="root" id="main">
       <div className="page-header">
           <div id="loading-bar"></div>
             <div className="container">
@@ -80,7 +75,6 @@ export default class Root extends Component {
         
       </footer>
       </div>
-      </Provider>
     );
   }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { browserHistory, Router, Route, Link } from 'react-router';
 import indexPage from '../modules/index/layout';
 import managePage from '../modules/manage/layout';
+import loginPage from '../modules/login/layout';
 import App from '../Hello';
 
 export default <Route path="/" component={App}>
@@ -9,4 +10,6 @@ export default <Route path="/" component={App}>
          component={indexPage} />
   <Route path="/manage"
          component={managePage} />
+  <Route path="/login"
+         component={loginPage} />
 </Route>

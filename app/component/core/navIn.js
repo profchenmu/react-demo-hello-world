@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import MenuItem from './navItem';
-import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router';
+import increaseAction from '../../redux/actions/nav';
+import { connect } from 'react-redux';
  
 
 
-export default class Counter extends Component {
+class NavIn extends Component {
 	static propTypes = {
     value: PropTypes.object.isRequired,
     onIncreaseClick: PropTypes.object.isRequired
@@ -16,7 +17,7 @@ export default class Counter extends Component {
 		const {value, onIncreaseClick} = this.props
 		return (
 			<ul className="nav">
-      
+
       {
         onIncreaseClick.fragment.children.map(item => 
           <MenuItem 
@@ -30,6 +31,26 @@ export default class Counter extends Component {
 		)
 	}
 }
+
+function mapStateToProps(state) {
+  return {
+    value: state
+  }
+}
+
+// Map Redux actions to component props
+function mapDispatchToProps(dispatch) {
+  return {
+    // onIncreaseClick: dispatch(increaseAction())
+    onIncreaseClick: increaseAction
+  }
+}
+
+// Connected Component
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavIn)
 
 
 
