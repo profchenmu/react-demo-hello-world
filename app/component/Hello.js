@@ -34,6 +34,24 @@ export default class Root extends Component {
     console.log(this);
     console.timeEnd('testForEach');
     const {children} = this.props;
+    const logged = true;
+    let tempDom = null;
+if(logged){
+      tempDom = (<div className="container root-view">
+
+        <div className="root-sub-nav">
+      
+          <App />
+          
+        </div>
+        <div className="main-right">
+          {children}
+          
+        </div>
+      </div>);
+    }
+    console.log({children});
+    console.log({logged});
     return (
       <div className="root" id="main">
       <div className="page-header">
@@ -60,17 +78,8 @@ export default class Root extends Component {
               
           </div>
       </div>
-      <div className="container root-view">
-
-        <div className="root-sub-nav">
+{tempDom}
       
-          <App />
-          
-        </div>
-        <div className="main-right">
-          {children}
-        </div>
-      </div>
       <footer className="footer">
         
       </footer>

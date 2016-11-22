@@ -60,17 +60,17 @@ export default class Root extends Component {
               
           </div>
       </div>
-      <div className="container root-view">
+      // <div className="container root-view">
 
-        <div className="root-sub-nav">
+      //   <div className="root-sub-nav">
       
-          <App />
+      //     <App />
           
-        </div>
-        <div className="main-right">
-          {children}
-        </div>
-      </div>
+      //   </div>
+      //   <div className="main-right">
+      //     {children}
+      //   </div>
+      // </div>
       <footer className="footer">
         
       </footer>
