@@ -15,17 +15,28 @@ import configureStore from './redux/store/index';
 import Root from './component/Hello';
 import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
 
-// const rootApp = combineReducers({
-// 	...reducers,
-// 	routing: routerReducer
-// });
 
-
-// const store = createStore(rootApp);
 
 const store = configureStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
+
+console.log(store.getState().login);
+
+function userAuth(nextState, replace, next) {
+  let {login} = store.getState();
+  console.log(login);
+  if (login.value2 == true) {
+  	return next();
+  }else{
+  	alert('请先登录后再访问')
+  // history.goBack()
+  next(replace('/login')) 
+  // # 举例：跳转到登录页的写法
+  }
+
+  
+}
 
 ReactDOM.render(
 <Provider store={store}>
@@ -33,7 +44,8 @@ ReactDOM.render(
 
 	<Route path="/" component={Root}>
 		<Route path="/index"
-		       component={indexPage} />
+		       component={indexPage} 
+		       onEnter={userAuth}/>
 		<Route path="/manage"
 		       component={managePage} />
 	</Route>

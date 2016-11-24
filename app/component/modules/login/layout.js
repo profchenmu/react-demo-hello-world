@@ -9,15 +9,25 @@ import { connect } from 'react-redux';
 class Login extends Component {
 
 
-    static propTypes = {
+  static propTypes = {
     value2: PropTypes.object.isRequired,
-    loginClick: PropTypes.func.isRequired
+    // loginClick: PropTypes.func.isRequired
+  }
+  
+
+  login(){
+    let {loginClick, value2, router} = this.props;
+
+    loginClick(loginClick);
+
+    if(value2.login.value2==1){
+      router.replace('/index');
+    }
   }
 
-
   render() {
-    const {value2, loginClick} = this.props;
-    console.log(this.props);
+    // let {value2} = this.props;
+
     console.timeEnd('testForEach');
     return (
       <div className="no-logged" id="main">
@@ -60,7 +70,7 @@ class Login extends Component {
                             <span className="icon-locked"></span>
                             <input type="password" className="auth-login" id="input-password-1" placeholder="请输入登录密码" />
                         </div>
-                        <button onClick={loginClick} type="button" id="submit-login" className="btn btn-default btn-primary">登 录</button>
+                        <button onClick={() => this.login()} type="button" id="submit-login" className="btn btn-default btn-primary">登 录</button>
                         
                         <a href="javascript:;" className="help" data-placement="bottom" title="请留意通知短信或向公司的账户管理员索取登录账号；请留意发送到您手机上的密码，忘记密码请联系管理员">
                             <span className="icon-info-with-circle"></span>帮助

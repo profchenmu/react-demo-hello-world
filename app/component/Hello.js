@@ -9,24 +9,7 @@ import App from './core/navIn';
 
 export default class Root extends Component {
 
-  // componentDidMount() {
-  // 	$.ajax({
-  // 		url: 'http://localhost:81/b',
-  //     mode: 'no-cors',
-  //     method: 'GET'
-  // 	})
-  // 	.done(function(msg) {
-  // 		if (this.isMounted()) {
-  //         this.setState({
-  //           list: JSON.parse(msg)[0].todoName
-  //         });
-  //       }
-  // 	}.bind(this));
-  // }
 
-  // componentWillUnmount() {
-  //   this.serverRequest.abort();
-  // }
 
 
 
@@ -34,9 +17,10 @@ export default class Root extends Component {
     console.log(this);
     console.timeEnd('testForEach');
     const {children} = this.props;
-    const logged = true;
+    console.log(this.props);
+    // const logged = true;
     let tempDom = null;
-if(logged){
+// if(logged){
       tempDom = (<div className="container root-view">
 
         <div className="root-sub-nav">
@@ -49,9 +33,8 @@ if(logged){
           
         </div>
       </div>);
-    }
+    // }
     console.log({children});
-    console.log({logged});
     return (
       <div className="root" id="main">
       <div className="page-header">
