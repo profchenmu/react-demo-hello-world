@@ -18,10 +18,25 @@ class Login extends Component {
   login(){
     let {loginClick, value2, router} = this.props;
 
-    loginClick(loginClick);
+    this.props.loginClick();
+    // let self = this;
+    // setTimeout(function(){
+    //     console.log(self.props)
+    // },0)
+    
 
-    if(value2.login.value2==1){
-      router.replace('/index');
+    // if(value2.login.value2==1){
+    //   router.replace('/index');
+    // }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // if (nextProps.login !== this.props.login) {
+    //   loadData(nextProps)
+    // }
+    console.log(nextProps);
+    if(nextProps.value2.value2==1){
+      nextProps.router.replace('/index');
     }
   }
 
@@ -90,7 +105,7 @@ class Login extends Component {
 
 function mapStateToProps(state) {
   return {
-    value2: state
+    value2: state.login
   }
 }
 

@@ -34,7 +34,7 @@ class NavIn extends Component {
 
 function mapStateToProps(state) {
   return {
-    value: state
+    value: state.nav
   }
 }
 
