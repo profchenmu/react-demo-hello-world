@@ -16,7 +16,8 @@ module.exports = {
         modules: path.resolve('app/component/modules'),
         actions: path.resolve('app/redux/actions'),
         reducers: path.resolve('app/redux/reducers'),
-        store: path.resolve('app/redux/store')
+        store: path.resolve('app/redux/store'),
+        userservice: path.resolve('app/services/userService')
     },
     // target: 'http://172.20.20.177:8080'
 };

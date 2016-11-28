@@ -1,43 +1,88 @@
 import React, { Component, PropTypes } from 'react';
 import loginAction from '../../../redux/actions/login';
+import userservice from 'userservice';
 
 import { connect } from 'react-redux';
 // import Nav from './core/nav';
 
 
+// const getInitState = () => ({name: ''});
+
+// function handleChange(evt) {
+//   this.setState({
+//     [evt.target.name]: evt.target.value.trim()
+//   })
+// }
 
 class Login extends Component {
 
 
   static propTypes = {
     value2: PropTypes.object.isRequired,
+    // name: PropTypes.string.isRequired,
     // loginClick: PropTypes.func.isRequired
   }
+
+
   
 
   login(){
     let {loginClick, value2, router} = this.props;
+    console.log(this.props);
 
     this.props.loginClick();
-    // let self = this;
-    // setTimeout(function(){
-    //     console.log(self.props)
-    // },0)
-    
+  }
 
-    // if(value2.login.value2==1){
-    //   router.replace('/index');
-    // }
+  // updateState ({ location, params: { msgId }, userData: { username }, msg: { msgs } } = this.props) {
+  //   // 情况1：处于 /msg/add，直接就是还原初始状态
+  //   if (isAddMode(location.pathname)) {
+  //     return this.setState(getInitState())
+  //   }
+
+  //   // 情况2：处于 /msg/modify/:msgId，且 state 中 msgs 不为空
+  //   if (msgs.length) {
+  //     let nextState = msgs.filter(({ id }) => id === msgId)[0]
+  //     if (!nextState || nextState.author !== username) {
+  //       return this.handleIllegal()
+  //     }
+  //     return this.setState(nextState)
+  //   }
+
+  //   // 情况3：强制刷新 /msg/detail/:msgId 后，跳转到 /msg/modify/:msgId
+  //   // 此时 state 中 msgs 为空，需要立即从后端 API 获取
+  //   msgService.fetch({ msgId }).then(msg => {
+  //     let { id, title, content, author } = msg
+  //     if (!msg || author !== username) {
+  //       return this.handleIllegal()
+  //     }
+  //     this.setState({ id, title, content })
+  //   })
+  // }
+
+  constructor (props) {
+    super(props)
+    this.state = {username: ''};
+    var self = this;
+    this.handleChange = function(evt){
+      self.setState({
+        [evt.target.name]: evt.target.value
+      })
+    }
+    
+  //   this.setState({
+  //   [evt.target.name]: evt.target.value.trim()
+  // });
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
     // if (nextProps.login !== this.props.login) {
     //   loadData(nextProps)
     // }
-    console.log(nextProps);
-    if(nextProps.value2.value2==1){
-      nextProps.router.replace('/index');
-    }
+    // console.log(nextProps);
+    // if(nextProps.value2.value2==1){
+    //   nextProps.router.replace('/index');
+    // }
   }
 
   render() {
@@ -79,7 +124,14 @@ class Login extends Component {
                     <form id="login-form">
                         <div className="form-group">
                             <span className="icon-user"></span>
-                            <input type="username" className="auth-login" id="input-username-1" placeholder="请输入登录账号" />
+                            <input type="username"
+                                    name="username" 
+                                   className="auth-login" 
+                                   id="input-username-1" 
+                                   placeholder="请输入登录账号"
+                                   value={this.state.username}
+                                   onChange={this.handleChange}
+                                   />
                         </div>
                         <div className="form-group">
                             <span className="icon-locked"></span>
