@@ -21,7 +21,6 @@ const store = configureStore();
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-console.log(store.getState().login);
 
 function userAuth(nextState, replace, next) {
   let {login} = store.getState();

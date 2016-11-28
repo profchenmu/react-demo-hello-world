@@ -24,11 +24,8 @@ class Login extends Component {
   }
 
 
-  
-
   login(){
     let {loginClick, value2, router} = this.props;
-    console.log(this.props);
 
     this.props.loginClick();
   }
@@ -74,7 +71,8 @@ class Login extends Component {
   // });
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps,b) {
+    console.log(this.state)
     console.log(nextProps);
     // if (nextProps.login !== this.props.login) {
     //   loadData(nextProps)
@@ -83,11 +81,12 @@ class Login extends Component {
     // if(nextProps.value2.value2==1){
     //   nextProps.router.replace('/index');
     // }
+
   }
 
   render() {
-    // let {value2} = this.props;
-
+    let {loginClick, value2, router} = this.props;
+    
     console.timeEnd('testForEach');
     return (
       <div className="no-logged" id="main">
