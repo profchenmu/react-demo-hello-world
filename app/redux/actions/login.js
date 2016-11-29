@@ -12,7 +12,6 @@ const login = (formData) => {
 }
 
 const loginDone = (userData) => {
-  	console.log(userData)
 	return {
 		type: 'LOGIN',
 		payload: userData
