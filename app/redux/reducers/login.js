@@ -1,7 +1,6 @@
 export default (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN':
-    	console.log(Object.assign({}, state, action.payload));
       return Object.assign({}, state, action.payload);
       // merge({}, state, action.payload);
     default:

@@ -5,9 +5,9 @@ import xhr from './xhr/'
  */
 class UserService {
 
-  checkLogin () {
-    return xhr({ url: '/user' })
-  }
+  // checkLogin () {
+  //   return xhr({ url: '/user' })
+  // }
 
   /**
    * @param  {Object} userData
@@ -21,9 +21,9 @@ class UserService {
     })
   }
 
-  logout () {
-    return xhr({ url: '/logout' })
-  }
+  // logout () {
+  //   return xhr({ url: '/logout' })
+  // }
 
 }
 

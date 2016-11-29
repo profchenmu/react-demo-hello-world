@@ -18,16 +18,18 @@ class Login extends Component {
 
 
   static propTypes = {
-    value2: PropTypes.object.isRequired,
+    // value2: PropTypes.object.isRequired,
     // name: PropTypes.string.isRequired,
     // loginClick: PropTypes.func.isRequired
   }
 
 
-  login(){
-    let {loginClick, value2, router} = this.props;
-
-    this.props.loginClick();
+  login(e){
+    e.preventDefault()
+    console.log(this.props);
+    let {login, userData, router} = this.props;
+    console.log(this.state);
+    this.props.login(this.state);
   }
 
   // updateState ({ location, params: { msgId }, userData: { username }, msg: { msgs } } = this.props) {
@@ -72,7 +74,6 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps,b) {
-    console.log(this.state)
     console.log(nextProps);
     // if (nextProps.login !== this.props.login) {
     //   loadData(nextProps)
@@ -85,7 +86,7 @@ class Login extends Component {
   }
 
   render() {
-    let {loginClick, value2, router} = this.props;
+    let {loginClick, userData, router} = this.props;
     
     console.timeEnd('testForEach');
     return (
@@ -136,7 +137,7 @@ class Login extends Component {
                             <span className="icon-locked"></span>
                             <input type="password" className="auth-login" id="input-password-1" placeholder="请输入登录密码" />
                         </div>
-                        <button onClick={() => this.login()} type="button" id="submit-login" className="btn btn-default btn-primary">登 录</button>
+                        <button onClick={(e) => this.login(e)} type="button" id="submit-login" className="btn btn-default btn-primary">登 录</button>
                         
                         <a href="javascript:;" className="help" data-placement="bottom" title="请留意通知短信或向公司的账户管理员索取登录账号；请留意发送到您手机上的密码，忘记密码请联系管理员">
                             <span className="icon-info-with-circle"></span>帮助
@@ -154,24 +155,26 @@ class Login extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    value2: state.login
-  }
-}
+// function mapStateToProps(state) {
+//   return {
+//     value2: state.login
+//   }
+// }
 
-// Map Redux actions to component props
-function mapDispatchToProps(dispatch) {
-  return {
-    loginClick: () => dispatch(loginAction)
-    // loginClick: loginAction
-  }
-}
+// // Map Redux actions to component props
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     loginClick: () => dispatch(loginAction)
+//     // loginClick: loginAction
+//   }
+// }
 
 // Connected Component
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  ({ userData }) => ({ userData }),
+  loginAction
+  // mapStateToProps,
+  // mapDispatchToProps
 )(Login);
 
 
