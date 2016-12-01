@@ -30,6 +30,7 @@ class Login extends Component {
     let {login, userData, router} = this.props;
     console.log(this.state);
     this.props.login(this.state);
+
   }
 
   // updateState ({ location, params: { msgId }, userData: { username }, msg: { msgs } } = this.props) {
@@ -78,16 +79,15 @@ class Login extends Component {
     // if (nextProps.login !== this.props.login) {
     //   loadData(nextProps)
     // }
-    // console.log(nextProps);
-    // if(nextProps.value2.value2==1){
-    //   nextProps.router.replace('/index');
-    // }
+    console.log(nextProps);
+    if(nextProps){
+      nextProps.router.replace('/index');
+    }
 
   }
 
   render() {
     let {loginClick, userData, router} = this.props;
-    
     console.timeEnd('testForEach');
     return (
       <div className="no-logged" id="main">
@@ -155,12 +155,15 @@ class Login extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     value2: state.login
-//   }
-// }
+function mapStateToProps(state) {
+  console.log(state)
+  return {
+    value2: state.login
+  }
+}
 
+
+// console.log(mapStateToProps);
 // // Map Redux actions to component props
 // function mapDispatchToProps(dispatch) {
 //   return {
@@ -170,8 +173,12 @@ class Login extends Component {
 // }
 
 // Connected Component
+// console.log(
+//   mapStateToProps({username: ""})
+//   )
 export default connect(
-  ({ userData }) => ({ userData }),
+  mapStateToProps,
+  // ({login}) => ({login}),
   loginAction
   // mapStateToProps,
   // mapDispatchToProps
