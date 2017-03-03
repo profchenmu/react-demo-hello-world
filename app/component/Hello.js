@@ -8,11 +8,6 @@ import App from './core/navIn';
 
 
 export default class Root extends Component {
-
-
-
-
-
   render() {
     console.log(this);
     console.timeEnd('testForEach');
